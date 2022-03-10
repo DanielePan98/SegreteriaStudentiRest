@@ -23,6 +23,16 @@ public class StudenteService {
 
 	}
 	
+	public Page<Studente> findByCorsoDiLaureaId(Long id,Pageable pageable){
+		return studenteRepository.findByCorsoDiLaureaId(id, pageable);
+		
+	}
+	
+	public Optional<Studente> findByLibrettoId(Long id){
+		return studenteRepository.findByLibrettonuovoId(id);
+		
+	}
+	
 	public List<Studente> findAll() {
 		return studenteRepository.findAll();
 

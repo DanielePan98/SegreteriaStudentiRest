@@ -30,7 +30,7 @@ public class Studente {
 	private CorsoDiLaurea corsoDiLaurea;
 	
 	@OneToOne(mappedBy = "studente")
-	private Libretto libretto;
+	private Libretto librettonuovo;
 
 	@Override
 	public String toString() {
