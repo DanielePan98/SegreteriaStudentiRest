@@ -31,11 +31,10 @@ public class CorsoDiLaurea {
 	@OneToMany(mappedBy = "corsoDiLaurea")
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<Studente> studenti;
-	
+
 	@ManyToMany
-	@JoinTable(name = "docenti_corsi",
-				joinColumns = @JoinColumn(name = "corso_id"),
-				inverseJoinColumns = @JoinColumn(name = "docente_id"))
+	@JoinTable(name = "docenti_corsi", joinColumns = @JoinColumn(name = "corso_id"), inverseJoinColumns = @JoinColumn(name = "docente_id"))
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<Docente> docenti;
 
 	@Override
