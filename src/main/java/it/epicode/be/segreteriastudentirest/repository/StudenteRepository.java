@@ -12,5 +12,6 @@ public interface StudenteRepository extends JpaRepository<Studente, Long>{
 	
 	Page<Studente> findByCorsoDiLaureaId(Long id,Pageable pageable);
 	Optional<Studente> findByLibrettonuovoId(Long id);
+	
 
 }
