@@ -43,7 +43,7 @@
 				<td th:text="${s.email}"></td>
 				<td th:text="${s.corsoDiLaurea.nome}"></td>
 <!-- 				<td><a th:href="@{/studenti/formaggiornastudente/{matricola}(matricola=${s.getMatricola()})}">Aggiorna</a></td> -->
-<!-- 				<td><a th:href="@{/studenti/eliminastudente/{matricola}(matricola=${s.getMatricola()})}" onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td> -->
+				<td><a th:href="@{/web/eliminastudente/{id}(id=${s.id})}" onclick="return confirm('Sei sicuro di voler eliminare questo elemento?')">Elimina</a></td>
 
 			</tr>
 		</tbody>

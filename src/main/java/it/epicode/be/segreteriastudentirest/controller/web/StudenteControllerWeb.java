@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -73,6 +74,30 @@ public class StudenteControllerWeb {
 		else {
 			return new ModelAndView("error").addObject("message", "Id non trovato");
 		}
+	}
+	
+	@PutMapping("/aggiornastudente/{id}")
+	// valid significa fa un controllo sul back end per verificare che il campo non sia vuoto
+	public String aggiornaStudente(@Valid Studente studente,@PathVariable Long id, BindingResult bindingResult, Model model) {
+		log.info("*** aggiornamento studente in corso ***");
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("corsi", corsoDiLaureaService.findAll());
+			return "aggiornaStudente";
+		}
+		studenteService.update(studente,id);
+		log.info("*** studente aggiornato ***");
+		return "redirect:/web/mostraelenco";	
+	}
+	/*
+	 * TODO implementare controllo su libretto esistente
+	 */
+	@GetMapping("/eliminastudente/{id}")
+	// valid significa fa un controllo sul back end per verificare che il campo non sia vuoto
+	public String eliminaStudente(@PathVariable Long id, Model model) {
+		log.info("*** cancellazione studente in corso ***");
+		studenteService.delete(id);
+		log.info("*** studente cancellato ***");
+		return "visualizzaStudenti";	
 	}
 	
 	
